@@ -3,7 +3,7 @@ var app = app || {};
 
 (function (module) {
 
-  let productionApiUrl = 'https://cr-301-2018-todo-app.herokuapp.com/';
+  let productionApiUrl = 'https://cr-301-2018-todo-app.herokuapp.com';
   let developmentApiUrl = 'http://localhost:3000';
 
   module.isProduction = /^(?!localhost|127)/.test(window.location.hostname);
@@ -13,4 +13,8 @@ var app = app || {};
   };
 
   console.log(module.ENVIRONMENT);
+
+  $.getJSON(module.ENVIRONMENT.apiUrl + '/tasks')
+    .then(result => console.log(result))
+    .catch(err => console.error(err));
 })(app);
