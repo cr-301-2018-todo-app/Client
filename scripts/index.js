@@ -14,7 +14,25 @@ var app = app || {};
 
   console.log(module.ENVIRONMENT);
 
-  $.getJSON(module.ENVIRONMENT.apiUrl + '/tasks')
-    .then(result => console.log(result))
-    .catch(err => console.error(err));
+  module.showOnly = (selector) => {
+    $('.container').hide();
+    $(selector).show();
+  };
+
+  const templateCache = {};
+  module.render = (templateId, dataToRender) => {
+    // Try to find a cached template
+    let template = templateCache[templateId];
+
+    // If it doesn't exist...
+    if(!template) {
+      console.log(`Compiling template ${templateId}`)
+      template = Handlebars.compile(document.getElementById(templateId).innerText);
+
+      // Save compiled template for later...
+      templateCache[templateId] = template;
+    }
+
+    return template(dataToRender);
+  };
 })(app);
