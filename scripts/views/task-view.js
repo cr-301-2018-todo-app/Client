@@ -8,7 +8,7 @@ var app = app || {};
   taskView.initIndexPage = () => {
     app.showOnly('.task-view');
 
-    app.Task.all.forEach(task => $('#task-list').append(task.toHtml()));
+    app.Task.getAll().forEach(task => $('#task-list').append(task.toHtml()));
   }
 
   module.taskView = taskView;

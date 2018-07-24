@@ -19,6 +19,7 @@ var app = app || {};
     $(selector).show();
   };
 
+  // REVIEW: How can this be `const`?
   const templateCache = {};
   module.render = (templateId, dataToRender) => {
     // Try to find a cached template
