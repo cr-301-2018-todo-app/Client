@@ -13,7 +13,3 @@ var app = app || {};
 
   module.taskView = taskView;
 })(app)
-
-$(function() {
-  app.Task.fetchAll(app.taskView.initIndexPage);
-})
