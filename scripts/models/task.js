@@ -31,6 +31,7 @@ var app = app || {};
   };
   // REVIEW: Changing this to a module-scoped (private) variable hides from the outside world
   const loadAll = rows => {
+    all.length = 0;
     // Have to change from map to forEach due to `const all`; can't replace the all value
     rows.sort(compareBy('title')).forEach(task => all.push(new Task(task)));
   }
@@ -40,6 +41,11 @@ var app = app || {};
       // REVIEW: `then` returns another Deferred (Promise), so you can chain another `then`, `catch`, etc
       .then(loadAll)
       .then(callback)
+      .catch(errorCallback);
+
+  Task.fetchOne = (taskId, callback) =>
+    $.get(`${app.ENVIRONMENT.apiUrl}/task/${taskId}`)
+      .then(taskData => callback(new Task(taskData)))
       .catch(errorCallback);
 
   Task.createTask = task =>
