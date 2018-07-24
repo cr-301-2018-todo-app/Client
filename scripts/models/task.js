@@ -42,5 +42,10 @@ var app = app || {};
       .then(callback)
       .catch(errorCallback);
 
+  Task.createTask = task =>
+    $.post(`${app.ENVIRONMENT.apiUrl}/tasks/add`)
+      .then(() => page('/'))
+      .catch(errorCallback);
+
   module.Task = Task;
 })(app)
