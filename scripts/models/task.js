@@ -43,7 +43,7 @@ var app = app || {};
       .catch(errorCallback);
 
   Task.createTask = task =>
-    $.post(`${app.ENVIRONMENT.apiUrl}/tasks/add`)
+    $.post(`${app.ENVIRONMENT.apiUrl}/tasks/add`, task)
       .then(() => page('/'))
       .catch(errorCallback);
 

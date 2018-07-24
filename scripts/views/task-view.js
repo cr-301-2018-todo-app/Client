@@ -11,7 +11,7 @@ var app = app || {};
     app.Task.getAll().forEach(task => $('#task-list').append(task.toHtml()));
   }
 
-  taskView.initAddForm = ctx => {
+  taskView.initAddForm = () => {
     app.showOnly('.add-view');
 
     $('#add-form').on('submit', function (event) {
