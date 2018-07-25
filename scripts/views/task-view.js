@@ -34,5 +34,9 @@ var app = app || {};
     app.Task.createTask(task, () => page('/'));
   });
 
+  taskView.initUpdatePage = (book) => {
+    console.log('update', book);
+  };
+
   module.taskView = taskView;
 })(app)
