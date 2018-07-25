@@ -19,6 +19,11 @@
         <p>Completion status: {{status}}</p>
         <p>Category: {{category}}</p>
         <p>Complete this task by {{due}}</p>
+        <p>
+          <a href="/tasks/{{id}}/update">Update</a>
+          <!-- WARNING: DO NOT MAKE DELETE GET-ABLE FOR REAL -->
+          <a href="/tasks/{{id}}/delete">Delete</a>
+        </p>
       </li>
     </script>
 
