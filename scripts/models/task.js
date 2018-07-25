@@ -53,5 +53,22 @@ var app = app || {};
       .then(callback)
       .catch(errorCallback);
 
+  Task.updateTask = (task, callback) =>
+    $.ajax({
+      method: 'put',
+      url: `${app.ENVIRONMENT.apiUrl}/task/${task.id}`,
+      data: task
+    })
+      .then(callback)
+      .catch(errorCallback);
+
+  Task.deleteOne = (taskId, callback) =>
+    $.ajax({
+      method: 'delete',
+      url: `${app.ENVIRONMENT.apiUrl}/task/${taskId}`
+    })
+      .then(callback)
+      .catch(errorCallback);
+
   module.Task = Task;
 })(app)
