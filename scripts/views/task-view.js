@@ -31,7 +31,7 @@ var app = app || {};
       category: this.category.value,
     };
 
-    app.Task.createTask(task);
+    app.Task.createTask(task, () => page('/'));
   });
 
   module.taskView = taskView;

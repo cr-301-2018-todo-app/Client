@@ -48,9 +48,9 @@ var app = app || {};
       .then(taskData => callback(new Task(taskData)))
       .catch(errorCallback);
 
-  Task.createTask = task =>
+  Task.createTask = (task, callback) =>
     $.post(`${app.ENVIRONMENT.apiUrl}/tasks/add`, task)
-      .then(() => page('/'))
+      .then(callback)
       .catch(errorCallback);
 
   module.Task = Task;
